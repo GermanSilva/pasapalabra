@@ -1,0 +1,127 @@
+@import 'tailwindcss';
+
+
+:root {
+  --clr-primary: hsl(211, 100%, 50%);
+  --clr-primary-dark: hsl(211, 100%, 30%);
+  --clr-primary-active: hsl(211, 90%, 80%);
+  --clr-incorrect: hsl(0, 70%, 50%);
+  --clr-incorrect-dark: hsl(0, 70%, 36%);
+  --clr-correct: hsl(120, 80%, 42%);
+  --clr-correct-dark: hsl(120, 80%, 35%);
+  --clr-passed: hsl(50, 100%, 50%);
+  --clr-passed-dark: hsl(50, 100%, 40%);
+  --gradient-pri: linear-gradient(10deg, var(--clr-primary-dark), var(--clr-primary));
+  --gradient-inc: linear-gradient(10deg, var(--clr-incorrect-dark), var(--clr-incorrect));
+  --gradient-cor: linear-gradient(10deg, var(--clr-correct-dark), var(--clr-correct));
+  --gradient-pas: linear-gradient(10deg, var(--clr-passed-dark), var(--clr-passed));
+  --gradient-pri-hover: linear-gradient(10deg, var(--clr-primary-dark), var(--clr-primary-dark));
+  --gradient-act: linear-gradient(10deg, var(--clr-primary), var(--clr-primary-active));
+  --bg-img: url('./assets/bg.jpg');
+
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background: var(--bg-img) no-repeat center center fixed;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@layer utilities {
+  .disabled {
+    pointer-events: none;
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+  .grad-pri {
+    background-image: var(--gradient-pri);
+  }
+  .grad-inc {
+    background-image: var(--gradient-inc);
+  }
+  .grad-cor {
+    background-image: var(--gradient-cor);
+  }
+  .grad-pas {
+    background-image: var(--gradient-pas);
+  }
+  .bg-pri {
+    background-color: var(--clr-primary);
+  }
+  .border-pri {
+    border-color: var(--clr-primary-dark);
+  }
+  .border-inc {
+    border-color: var(--clr-incorrect);
+  }
+  .border-cor {
+    border-color: var(--clr-correct);
+  }
+
+}
+
+@layer components {
+  button:focus,
+  button:focus-visible {
+    outline: 4px auto -webkit-focus-ring-color;
+  }
+
+  .input {
+    padding: 8px;
+    background-color: var(--clr-primary-dark);
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+
+  .versus {
+    &::before, &::after {
+      --vs2: hsla(0, 0%, 100%, 0.2);
+      --vs1: hsla(0, 0%, 100%, 1);
+      content: '';
+      position: absolute;
+      background-image: linear-gradient(to bottom, var(--vs1), var(--vs2));
+      bottom: -10px;
+      left: 50%;
+      width: 2px;
+      height: 50px;
+    }
+    &::before {
+      --vs1: hsla(0, 0%, 100%, 0.2);
+      --vs2: hsla(0, 0%, 100%, 1);
+      top: -10px;
+    }
+  }
+
+  .main-content {
+    grid-template-areas: 'rosco';
+  }
+  .rosco-middle {
+    grid-area: rosco;
+  }
+  .absolute-middle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  display: grid;
+  place-items: center;
+  min-width: 320px;
+  width: 100%;
+  min-height: 100vh;
+}
+
+

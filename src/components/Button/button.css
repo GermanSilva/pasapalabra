@@ -1,0 +1,23 @@
+@import 'tailwindcss';
+
+@layer components {
+  .btn {
+    @apply text-white font-bold w-40 py-2.5 px-4;
+    @apply border-2 border-white rounded-full cursor-pointer;
+    background-image: var(--gradient-pri);
+
+    &:hover {
+      background-image: var(--gradient-pri-hover);
+    }
+
+    &.grad-inc:hover {
+      background-image: var(--gradient-inc);
+    }
+    &.grad-cor:hover {
+      background-image: var(--gradient-cor);
+    }
+    &.grad-pas:hover {
+      background-image: var(--gradient-pas);
+    }
+  }
+}
